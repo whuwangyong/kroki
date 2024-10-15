@@ -28,6 +28,7 @@ import io.vertx.ext.web.handler.CorsHandler;
 import java.util.*;
 import java.util.stream.Collectors;
 
+import io.vertx.ext.web.handler.StaticHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -149,6 +150,12 @@ public class Server extends AbstractVerticle {
     String krokiVersionNumber = healthHandler.getKrokiVersionNumber();
     router.get("/")
       .handler(new HelloHandler(vertx, serviceVersions, krokiVersionNumber, krokiBuildHash).create());
+
+
+    // 处理静态文件的请求，确保可以访问 js 文件
+    router.route("/root/js/*").handler(StaticHandler.create("web/root/js"));
+    // router.route("/root/css/*").handler(StaticHandler.create("web/root/css"));
+    // router.route("/live").handler(StaticHandler.create("web/live.html"));
 
     // Default route
     Route route = router.route("/*");
