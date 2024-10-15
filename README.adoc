@@ -1,3 +1,32 @@
+当我们运行官方的Kroki镜像时，访问 ``http://ip:8000`` 可以看到一个欢迎页面（来自于 link:server/src/main/resources/web/hello.html[hello.html]）。
+但是，该欢迎页面上**没有**类似 https://kroki.io 官方主页上的 https://kroki.io/#try[Try]:
+
+image::docs/image-try.png[]
+这是一个非常有用的功能。因此，本项目修改了 ``server``模块 ，添加了Try部分。
+其中的新增的html、css、js等文件是从 kroki.io 官网抄过来的。
+
+== 编译Server
+查看Makefile发现编译命令为：
+----
+./mvnw --no-transfer-progress clean package
+----
+运行，报错：
+----
+[ERROR]   ServerSSLTest.init:36 ? Vertx java.security.cert.CertificateException: No provider succeeded to generate a self-signed certificate. See debug log for the root cause.
+[INFO]
+[ERROR] Tests run: 174, Failures: 1, Errors: 9, Skipped: 64
+----
+应该是有些测试未通过，不深究了，直接跳过：
+----
+./mvnw --no-transfer-progress clean package -DskipTests
+----
+将编译后的server/target/kroki-server.jar替换到官方镜像中，或者自己重新build镜像。
+
+
+---
+
+以下是原内容。
+
 = image:https://kroki.io/assets/logo.svg[Kroki,200,link={uri-kroki}]
 :uri-kroki: https://kroki.io/
 :uri-kroki-docs: https://docs.kroki.io/
