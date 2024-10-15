@@ -5,6 +5,8 @@ image::docs/image-try.png[]
 这是一个非常有用的功能。因此，本项目修改了 ``server``模块 ，添加了Try部分。
 其中的新增的html、css、js等文件是从 kroki.io 官网抄过来的。
 
+修改了try的请求地址，详见 https://github.com/whuwangyong/kroki/commit/3ed02d881eb9e8e7be37cdb398b25bed01878c2f[这次提交]。
+
 == 编译Server
 查看Makefile发现编译命令为：
 ----
