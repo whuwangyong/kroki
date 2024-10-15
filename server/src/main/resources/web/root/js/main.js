@@ -93,7 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
       var urlPath = diagramType + '/svg/' + btoa(pako.deflate(textEncode(source), { level: 9, to: 'string' }))
         .replace(/\+/g, '-')
         .replace(/\//g, '_')
-      var url = 'https://kroki.io/' + urlPath
+      var url = 'http://42.csdc.com/' + urlPath
       diagramUrlPathElement.innerText = urlPath
       diagramUrlButtonElement.setAttribute('data-clipboard-text', url)
       var req = new XMLHttpRequest()
