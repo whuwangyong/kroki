@@ -95,7 +95,8 @@ document.addEventListener('DOMContentLoaded', function () {
         .replace(/\//g, '_')
       var url = 'http://42.csdc.com:8200/' + urlPath
       diagramUrlPathElement.innerText = urlPath
-      diagramUrlButtonElement.setAttribute('data-clipboard-text', url)
+      var mdImg='![](' + url + ')'
+      diagramUrlButtonElement.setAttribute('data-clipboard-text', mdImg)
       var req = new XMLHttpRequest()
       req.onreadystatechange = function () {
         if (this.readyState === XMLHttpRequest.DONE) {
